@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enock Buys | Computer Science Researcher</title>
+    <title>Enock Buys | AI Researcher & Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Base Styles */
@@ -102,22 +102,23 @@
         }
 
         .hero-avatar {
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             margin: 0 auto 2rem;
-            background: linear-gradient(45deg, var(--accent), var(--primary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
             border: 4px solid white;
             box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+
+        .hero-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .hero-title {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--primary);
@@ -127,6 +128,7 @@
             font-size: 1.3rem;
             color: var(--text-light);
             margin-bottom: 2rem;
+            line-height: 1.6;
         }
 
         .hero-buttons {
@@ -173,7 +175,7 @@
         /* CV Download Section */
         .cv-section {
             background: white;
-            padding: 2rem 0;
+            padding: 3rem 0;
             text-align: center;
         }
 
@@ -187,11 +189,14 @@
             color: var(--text-light);
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Sections */
         .section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
 
         .section-title {
@@ -297,12 +302,19 @@
 
         .project-image {
             height: 200px;
-            background: linear-gradient(45deg, var(--accent), var(--primary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
         }
 
         .project-content {
@@ -352,8 +364,6 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            cursor: pointer;
-            border: none;
         }
 
         .link-primary {
@@ -582,65 +592,14 @@
             transform: translateY(-3px);
         }
 
-        /* Document Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            position: relative;
-            margin: 2rem auto;
-            width: 90%;
-            height: 90%;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .modal-header {
-            background: var(--primary);
-            color: white;
-            padding: 1rem;
-            display: flex;
-            justify-content: between;
-            align-items: center;
-        }
-
-        .close {
-            color: white;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            right: 1rem;
-            top: 0.5rem;
-        }
-
-        .close:hover {
-            color: var(--accent);
-        }
-
-        .modal-body {
-            padding: 2rem;
-            height: calc(100% - 80px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
             }
 
             .nav-menu {
@@ -675,6 +634,14 @@
             .project-links {
                 justify-content: center;
             }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -699,10 +666,10 @@
     <section class="hero">
         <div class="container hero-content">
             <div class="hero-avatar">
-                <img src="1727500822272.jpeg" alt="Enock Buys" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                <img src="1727500822272.jpeg" alt="Enock Buys">
             </div>
             <h1 class="hero-title">Enock Onkarabile Buys</h1>
-            <p class="hero-subtitle">Computer Science Researcher | AI & Machine Learning Enthusiast</p>
+            <p class="hero-subtitle">Computer Science Researcher | AI & Machine Learning Specialist | Developing Intelligent Systems for Real-World Applications</p>
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-primary">
                     <i class="fas fa-code"></i>View My Work
@@ -717,11 +684,16 @@
     <!-- CV Download Section -->
     <section class="cv-section">
         <div class="container">
-            <h3>Download My CV</h3>
-            <p>Get a comprehensive overview of my education, experience, and projects</p>
-            <button onclick="openDocument('2.pdf')" class="btn btn-primary">
-                <i class="fas fa-download"></i>Download CV (PDF)
-            </button>
+            <h3>Download My CV & Research Documents</h3>
+            <p>Access my comprehensive CV, research proposals, and project documentation</p>
+            <div class="hero-buttons">
+                <a href="2.pdf" class="btn btn-primary" download>
+                    <i class="fas fa-download"></i>Download CV (PDF)
+                </a>
+                <a href="#projects" class="btn btn-outline">
+                    <i class="fas fa-file-alt"></i>View Project Documents
+                </a>
+            </div>
         </div>
     </section>
 
@@ -731,10 +703,10 @@
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <p>
-                    I'm a Computer Science Honours student at the University of Johannesburg, specializing in artificial intelligence and machine learning. My research focuses on developing practical solutions that bridge academic theory with real-world applications.
+                    I'm a Computer Science Honours student at the University of Johannesburg, specializing in Artificial Intelligence and Machine Learning. My research focuses on developing practical solutions that bridge academic theory with real-world applications, particularly in generative models and reinforcement learning.
                 </p>
                 <p>
-                    Currently, I'm exploring generative models for fraud detection and reinforcement learning techniques for game theory applications. I believe in building systems that are not only technically sound but also accessible and impactful.
+                    With a strong foundation in mathematics, statistics, and computer science, I'm passionate about creating intelligent systems that solve complex problems. My work spans from fraud detection algorithms to game theory applications and secure backup systems for small businesses.
                 </p>
             </div>
             <div class="about-highlights">
@@ -743,21 +715,21 @@
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>AI Research</h3>
-                    <p>Exploring generative models and reinforcement learning applications</p>
+                    <p>Exploring generative models, reinforcement learning, and their practical applications</p>
                 </div>
                 <div class="highlight-card">
                     <div class="highlight-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>Development</h3>
-                    <p>Building practical systems with modern technologies</p>
+                    <p>Building full-stack applications and systems with modern technologies</p>
                 </div>
                 <div class="highlight-card">
                     <div class="highlight-icon">
                         <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3>Learning</h3>
-                    <p>Continuously expanding skills through academic research</p>
+                    <h3>Continuous Learning</h3>
+                    <p>Expanding skills through academic research and professional development</p>
                 </div>
             </div>
         </div>
@@ -777,25 +749,26 @@
                 <!-- Fraud Detection Project -->
                 <div class="project-card" data-category="ai">
                     <div class="project-image">
-                        <i class="fas fa-shield-alt"></i>
+                        <img src="frauddetection.png" alt="Fraud Detection Project">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Fraud Detection AI</h3>
+                        <h3 class="project-title">Generative AI for Fraud Detection</h3>
                         <p class="project-description">
-                            Conditional GAN model for synthetic fraud pattern generation with FID/KID evaluation metrics. Addressing class imbalance in financial datasets.
+                            Conditional GAN model for synthetic fraud pattern generation with FID/KID evaluation metrics. Addressing class imbalance in financial datasets through advanced data augmentation techniques.
                         </p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
                             <span class="tag">TensorFlow</span>
                             <span class="tag">GANs</span>
+                            <span class="tag">Data Augmentation</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/enockbuys/fraud-detection-project" class="project-link link-primary" target="_blank">
                                 <i class="fab fa-github"></i>Code
                             </a>
-                            <button onclick="openDocument('219013044_Buys_EO_Deliverable_01_IT28X872C_IT28X30.pdf')" class="project-link link-secondary">
+                            <a href="219013044_Buys_EO_Deliverable_01_IT28X872C_IT28X30.pdf" class="project-link link-secondary" download>
                                 <i class="fas fa-file-alt"></i>Proposal
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -803,25 +776,26 @@
                 <!-- VAE-GAN Project -->
                 <div class="project-card" data-category="ai">
                     <div class="project-image">
-                        <i class="fas fa-robot"></i>
+                        <img src="55a46613-9aa7-4fad-b8c1-558a6a107802.jpeg" alt="VAE-GAN Project">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Hybrid VAE-GAN</h3>
+                        <h3 class="project-title">Hybrid VAE-GAN for Face Generation</h3>
                         <p class="project-description">
-                            Research on hybrid architectures for low-resolution face generation using CelebA dataset with resource-constrained benchmarks.
+                            Research on hybrid architectures for low-resolution face generation using CelebA dataset with resource-constrained benchmarks and fusion strategy comparisons.
                         </p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
                             <span class="tag">PyTorch</span>
                             <span class="tag">VAE</span>
+                            <span class="tag">GAN</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/enockbuys/vae-gan-face-generation" class="project-link link-primary" target="_blank">
                                 <i class="fab fa-github"></i>Code
                             </a>
-                            <button onclick="openDocument('BUYS_EO_219013044_IT18X57_2025_RP.pdf')" class="project-link link-secondary">
+                            <a href="BUYS_EO_219013044_IT18X57_2025_RP.pdf" class="project-link link-secondary" download>
                                 <i class="fas fa-file-alt"></i>Proposal
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -829,17 +803,18 @@
                 <!-- RL Project -->
                 <div class="project-card" data-category="ai">
                     <div class="project-image">
-                        <i class="fas fa-chess"></i>
+                        <img src="Boxanddots.png" alt="Reinforcement Learning Project">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Game Theory Agent</h3>
+                        <h3 class="project-title">Reinforcement Learning Game Agent</h3>
                         <p class="project-description">
-                            DQN reinforcement learning agent for strategic game play with self-training and experience replay mechanisms.
+                            DQN reinforcement learning agent for strategic game play with self-training and experience replay mechanisms. Designed for the classic Dots & Boxes game with a 16x16 grid.
                         </p>
                         <div class="project-tags">
                             <span class="tag">Python</span>
                             <span class="tag">RL</span>
                             <span class="tag">PyTorch</span>
+                            <span class="tag">DQN</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/enockbuys/DotsAndBoxesAI" class="project-link link-primary" target="_blank">
@@ -848,9 +823,9 @@
                             <a href="https://youtu.be/oXwhfqg-xkU" class="project-link link-secondary" target="_blank">
                                 <i class="fas fa-play"></i>Demo
                             </a>
-                            <button onclick="openDocument('BUYS_EO_219013044_IT08X97_2025_D1.pdf')" class="project-link link-secondary">
+                            <a href="BUYS_EO_219013044_IT08X97_2025_D1.pdf" class="project-link link-secondary" download>
                                 <i class="fas fa-file-alt"></i>Proposal
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -858,25 +833,29 @@
                 <!-- Backup System -->
                 <div class="project-card" data-category="systems">
                     <div class="project-image">
-                        <i class="fas fa-server"></i>
+                        <img src="securebackup.png" alt="Backup System Project">
                     </div>
                     <div class="project-content">
                         <h3 class="project-title">Secure Backup System</h3>
                         <p class="project-description">
-                            Automated encrypted backup solution for SMBs with cloud synchronization and monitoring dashboard.
+                            Automated encrypted backup solution for SMBs with cloud synchronization, monitoring dashboard, and web-based management interface. Built on Linux with BorgBackup.
                         </p>
                         <div class="project-tags">
                             <span class="tag">Linux</span>
                             <span class="tag">Docker</span>
                             <span class="tag">Borg</span>
+                            <span class="tag">Security</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/enockbuys/linux-backup-system" class="project-link link-primary" target="_blank">
                                 <i class="fab fa-github"></i>Code
                             </a>
-                            <button onclick="openDocument('Buys_EO_219013044_IT28X97_PM1.pdf')" class="project-link link-secondary">
+                            <a href="Buys_EO_219013044_IT28X97_PM1.pdf" class="project-link link-secondary" download>
                                 <i class="fas fa-file-alt"></i>Proposal
-                            </button>
+                            </a>
+                            <a href="Buys_EO_219013044_IT28X97_CODE.pdf" class="project-link link-secondary" download>
+                                <i class="fas fa-file-code"></i>Documentation
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -884,17 +863,18 @@
                 <!-- Dating App -->
                 <div class="project-card" data-category="web">
                     <div class="project-image">
-                        <i class="fas fa-heart"></i>
+                        <img src="MingleApp.png" alt="Dating App Project">
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Mingle Platform</h3>
+                        <h3 class="project-title">Mingle Dating Platform</h3>
                         <p class="project-description">
-                            Full-stack dating application with preference-based matching algorithms and real-time messaging.
+                            Full-stack dating application with preference-based matching algorithms, real-time messaging, and secure authentication. Built with React, Node.js, and Firebase.
                         </p>
                         <div class="project-tags">
                             <span class="tag">React</span>
                             <span class="tag">Node.js</span>
                             <span class="tag">Firebase</span>
+                            <span class="tag">JWT</span>
                         </div>
                         <div class="project-links">
                             <a href="https://github.com/freddymuleya16/Mingle" class="project-link link-primary" target="_blank">
@@ -929,15 +909,19 @@
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">Java</span>
-                            <span class="skill-level">Intermediate</span>
+                            <span class="skill-level">Advanced</span>
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">SQL</span>
-                            <span class="skill-level">Intermediate</span>
+                            <span class="skill-level">Advanced</span>
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">JavaScript</span>
-                            <span class="skill-level">Intermediate</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">HTML/CSS</span>
+                            <span class="skill-level">Advanced</span>
                         </li>
                     </ul>
                 </div>
@@ -952,11 +936,11 @@
                     <ul class="skill-list">
                         <li class="skill-item">
                             <span class="skill-name">TensorFlow</span>
-                            <span class="skill-level">Intermediate</span>
+                            <span class="skill-level">Advanced</span>
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">PyTorch</span>
-                            <span class="skill-level">Intermediate</span>
+                            <span class="skill-level">Advanced</span>
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">Scikit-learn</span>
@@ -964,6 +948,10 @@
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">Pandas/NumPy</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Reinforcement Learning</span>
                             <span class="skill-level">Advanced</span>
                         </li>
                     </ul>
@@ -974,16 +962,16 @@
                         <div class="skill-icon">
                             <i class="fas fa-server"></i>
                         </div>
-                        <h3 class="skill-title">Systems</h3>
+                        <h3 class="skill-title">Systems & Tools</h3>
                     </div>
                     <ul class="skill-list">
                         <li class="skill-item">
                             <span class="skill-name">Linux/Ubuntu</span>
-                            <span class="skill-level">Intermediate</span>
+                            <span class="skill-level">Advanced</span>
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">Docker</span>
-                            <span class="skill-level">Intermediate</span>
+                            <span class="skill-level">Advanced</span>
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">AWS Basics</span>
@@ -991,6 +979,10 @@
                         </li>
                         <li class="skill-item">
                             <span class="skill-name">Git</span>
+                            <span class="skill-level">Advanced</span>
+                        </li>
+                        <li class="skill-item">
+                            <span class="skill-name">Firebase</span>
                             <span class="skill-level">Advanced</span>
                         </li>
                     </ul>
@@ -1009,7 +1001,7 @@
                         <div class="timeline-date">2025 - Present</div>
                         <h3 class="timeline-title">BSc Honours Computer Science</h3>
                         <p class="timeline-subtitle">University of Johannesburg</p>
-                        <p>Specializing in Artificial Intelligence and Machine Learning research</p>
+                        <p>Specializing in Artificial Intelligence and Machine Learning research. Coursework includes Generative AI, Reinforcement Learning, Advanced Machine Learning, and Linux System Administration.</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -1019,7 +1011,7 @@
                         <div class="timeline-date">2020 - 2024</div>
                         <h3 class="timeline-title">BSc Mathematical Sciences</h3>
                         <p class="timeline-subtitle">University of Limpopo</p>
-                        <p>Majors in Computer Science and Statistics</p>
+                        <p>Majors in Computer Science and Statistics. Developed strong analytical and problem-solving skills through rigorous mathematical training.</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -1029,7 +1021,17 @@
                         <div class="timeline-date">2025 - Present</div>
                         <h3 class="timeline-title">ALX Data Science Bootcamp</h3>
                         <p class="timeline-subtitle">Online Program</p>
-                        <p>Professional Foundations completed, Data Analytics in progress</p>
+                        <p>Professional Foundations completed (12 weeks), currently studying Data Analytics (14 weeks). Upcoming modules include Python Programming, Machine Learning, and AWS Cloud.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2018</div>
+                        <h3 class="timeline-title">Grade 12 Matric (Bachelor's Pass)</h3>
+                        <p class="timeline-subtitle">Gaopotlake Secondary School</p>
+                        <p>Focused on STEM subjects including Mathematics and Physical Sciences, laying the foundation for further studies in computer science.</p>
                     </div>
                     <div class="timeline-dot"></div>
                 </div>
@@ -1043,7 +1045,7 @@
             <h2 class="section-title">Get In Touch</h2>
             <div style="text-align: center; max-width: 600px; margin: 0 auto;">
                 <p style="font-size: 1.1rem; margin-bottom: 2rem;">
-                    I'm always open to discussing research collaborations, new opportunities, or just chatting about technology and AI.
+                    I'm always open to discussing research collaborations, new opportunities, or just chatting about technology and AI. Feel free to reach out through any of the channels below.
                 </p>
                 <div class="hero-buttons">
                     <a href="mailto:enockonkarabile@gmail.com" class="btn btn-primary">
@@ -1051,6 +1053,9 @@
                     </a>
                     <a href="https://linkedin.com/in/enock-buys-56b899239" class="btn btn-outline" target="_blank">
                         <i class="fab fa-linkedin"></i>LinkedIn
+                    </a>
+                    <a href="https://github.com/enockbuys" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-github"></i>GitHub
                     </a>
                 </div>
             </div>
@@ -1078,7 +1083,7 @@
                 <a href="https://linkedin.com/in/enock-buys-56b899239" class="social-link" target="_blank">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://enockbuys.github.io" class="social-link" target="_blank">
+                <a href="https://enockbuys.github.io/website" class="social-link" target="_blank">
                     <i class="fas fa-globe"></i>
                 </a>
             </div>
@@ -1087,45 +1092,7 @@
         </div>
     </footer>
 
-    <!-- Document Modal -->
-    <div id="documentModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Document Viewer</h2>
-                <span class="close" onclick="closeModal()">&times;</span>
-            </div>
-            <div class="modal-body">
-                <p>To view this document, please ensure the PDF file is uploaded to your website directory.</p>
-                <p>The document will open in a new tab once properly configured.</p>
-                <button onclick="closeModal()" class="btn btn-primary">Close</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Document viewer function
-        function openDocument(filename) {
-            // Check if file exists (in real implementation)
-            // For now, show modal with instructions
-            document.getElementById('documentModal').style.display = 'block';
-
-            // Uncomment the line below once documents are uploaded to your server
-             window.open(filename, '_blank');
-        }
-
-        // Close modal function
-        function closeModal() {
-            document.getElementById('documentModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('documentModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-
         // Simple navigation highlighting
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-link');
